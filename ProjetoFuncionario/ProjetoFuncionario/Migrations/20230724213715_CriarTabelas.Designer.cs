@@ -9,7 +9,7 @@ using ProjetoFuncionario.Data;
 namespace ProjetoFuncionario.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20230724205439_CriarTabelas")]
+    [Migration("20230724213715_CriarTabelas")]
     partial class CriarTabelas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,6 +31,9 @@ namespace ProjetoFuncionario.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Profissao")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Salario")

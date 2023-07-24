@@ -1,4 +1,5 @@
-﻿@{
+﻿@model FuncionarioModel
+@{
     ViewData["Title"] = "Cadastrar Funcionario";
 }
 
@@ -6,27 +7,49 @@
     <h1 class="display-4">Cadastrar Funcionario</h1>
 </div>
 
-<form>
+<br/>
+@if(TempData["MensagemSucesso"] != null)
+    {
+         <div class="alert alert-success" role="alert">
+           <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+           @TempData["MensagemSucesso"]
+        </div>   
+    }
+
+    @if(TempData["MensagemErro"] != null)
+    {
+         <div class="alert alert-success" role="alert">
+           <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+           @TempData["MensagemErro"]
+        </div>   
+    }
+<br/>
+
+<form asp-controller="Funcionario" asp-action="Cadastrar" method="post">
   <div class="form-group">
     <label for="Nome">Nome</label>
-    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Digite o Nome">
-    <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
+    <input type="text" class="form-control" asp-for="Nome" placeholder="Digite o Nome">
+   @Html.ValidationMessageFor(x => x.Nome,null, new { @class = "field-validation" })
   </div>
   <div class="form-group">
     <label for="e-mail">Email</label>
-    <input type="text" class="form-control" placeholder="Digite o E-mail">
+    <input type="text" class="form-control" asp-for="Email" placeholder="Digite o E-mail">
+    @Html.ValidationMessageFor(x => x.Email,null, new { @class = "field-validation" })
   </div>
   <div class="form-group">
     <label for="Profissao">Profissão</label>
-    <input type="text" class="form-control" placeholder="Digite o E-mail">
+    <input type="text" class="form-control" asp-for="Profissao" placeholder="Digite o E-mail">
+    @Html.ValidationMessageFor(x => x.Profissao,null, new { @class = "field-validation" })
   </div>
   <div class="form-group">
     <label for="tempoExperiencia">Tempo de Experiência</label>
-    <input type="number" class="form-control" placeholder="Digite o tempo de Experiencia">
+    <input type="number" class="form-control" asp-for="TempoExperiencia" placeholder="Digite o tempo de Experiencia">
+    @Html.ValidationMessageFor(x => x.TempoExperiencia,null, new { @class = "field-validation" })
   </div>
     <div class="form-group">
     <label for="salario">Salario</label>
-    <input type="text" class="form-control" placeholder="Digite o Salrio">
+    <input type="text" class="form-control" asp-for="Salario" placeholder="Digite o Salrio">
+    @Html.ValidationMessageFor(x => x.Salario,null, new { @class = "field-validation" })
   </div>
   <button type="submit" class="btn btn-primary btn-block">Cadastro do Funcionario</button>
 </form>

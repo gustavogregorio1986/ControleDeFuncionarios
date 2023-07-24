@@ -31,6 +31,9 @@ namespace ProjetoFuncionario.Migrations
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Profissao")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("Salario")
                         .HasColumnType("decimal(18,2)");
 
