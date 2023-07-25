@@ -10,7 +10,7 @@ namespace ProjetoFuncionario.Models
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Informe o E-mail")]
-        [EmailAddress(ErrorMessage = "Inforem o email correto para prosseguir")]
+        [EmailAddress(ErrorMessage = "Informe o email correto para prosseguir")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Informe a profissão")]
