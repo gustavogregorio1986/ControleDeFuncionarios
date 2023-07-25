@@ -80,7 +80,6 @@ namespace ProjetoFuncionario.Controllers
             return View(funcionario);
         }
 
-        [HttpDelete]
         public IActionResult Apagar(int id)
         {
             try
