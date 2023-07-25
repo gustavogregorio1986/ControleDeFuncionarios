@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoFuncionario.Models;
 using ProjetoFuncionario.Repositorios.Interface;
+using System.Collections.Generic;
 
 namespace ProjetoFuncionario.Controllers
 {
@@ -40,9 +41,11 @@ namespace ProjetoFuncionario.Controllers
             }
         }
 
+        [HttpGet]
         public IActionResult Consultar()
         {
-            return View();
+            List<FuncionarioModel> listar = _funcionarioRepositorio.ListarTodos();
+            return View(listar);
         }
 
 

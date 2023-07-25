@@ -1,6 +1,8 @@
 ﻿using ProjetoFuncionario.Data;
 using ProjetoFuncionario.Models;
 using ProjetoFuncionario.Repositorios.Interface;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ProjetoFuncionario.Repositorios
 {
@@ -13,6 +15,10 @@ namespace ProjetoFuncionario.Repositorios
             this._context = context;
         }
 
+        public List<FuncionarioModel> ListarTodos()
+        {
+            return _context.Funcionarios.ToList();
+        }
         public FuncionarioModel Adicionar(FuncionarioModel funcionario)
         {
             _context.Funcionarios.Add(funcionario);
