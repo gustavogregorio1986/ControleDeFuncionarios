@@ -12,5 +12,7 @@ namespace ProjetoFuncionario.Repositorios.Interface
         FuncionarioModel ListarPorId(int id);
 
         FuncionarioModel Atualizar(FuncionarioModel funcionario);
+
+        bool Apagar(int id);
     }
 }

@@ -62,26 +62,48 @@ namespace ProjetoFuncionario.Controllers
                 if(ModelState.IsValid)
                 {
                     _funcionarioRepositorio.Atualizar(funcionario);
-                    TempData["MesnagemSucesso"] = "Funcionário cadastrado com sucesso.";
+                    TempData["MensagemSucesso"] = "Funcionário alteardo com sucesso.";
                     return RedirectToAction("Consultar");
                 }
             }
             catch (System.Exception erro)
             {
-                TempData["MesnagemSucesso"] = $"Ops, não conseguimos cadastra o funcionario, tente novamente, erro: " + erro;
+                TempData["MensagemErro"] = $"Ops, não conseguimos alterar o funcionario, tente novamente, erro: " + erro;
             }
 
             return View("Editar", funcionario);
         }
 
-        public IActionResult ApagarConfirmacao()
+        public IActionResult ApagarConfirmacao(int id)
         {
-            return View();
+            FuncionarioModel funcionario = _funcionarioRepositorio.ListarPorId(id);
+            return View(funcionario);
         }
 
-        public IActionResult Apagar()
+        [HttpDelete]
+        public IActionResult Apagar(int id)
         {
-            return View();
+            try
+            {
+                
+                bool apagado = _funcionarioRepositorio.Apagar(id);
+
+                if(apagado)
+                {
+                    TempData["MensagemSucesso"] = "Funcionário apagado com sucesso.";
+                }
+                else
+                {
+                    TempData["MensagemErro"] = $"Ops, não conseguimos apagar o funcionario ";
+                }
+
+                return RedirectToAction("Consultar");
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos apagar o funcionario, tente novamente, erro: " + erro;
+                return RedirectToAction("Consultar");
+            }
         }
     }
 }

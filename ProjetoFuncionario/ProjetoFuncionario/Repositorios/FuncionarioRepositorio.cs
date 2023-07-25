@@ -49,5 +49,19 @@ namespace ProjetoFuncionario.Repositorios
 
             return funcionariodb;
         }
+
+        public bool Apagar(int id)
+        {
+            FuncionarioModel funcionariodb = ListarPorId(id);
+
+            if(funcionariodb == null) throw new Exception("Houve um erro na deleção do funcionario");
+
+            _context.Funcionarios.Remove(funcionariodb);
+            _context.SaveChanges();
+
+            return true;
+
+
+        }
     }
 }
