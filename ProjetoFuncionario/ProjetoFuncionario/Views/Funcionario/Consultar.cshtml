@@ -7,6 +7,24 @@
     <h1 class="display-4">Consulta de listagem de Funcionario</h1>
 </div>
 
+<br/>
+@if(TempData["MensagemSucesso"] != null)
+    {
+         <div class="alert alert-success" role="alert">
+           <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+           @TempData["MensagemSucesso"]
+        </div>   
+    }
+
+    @if(TempData["MensagemErro"] != null)
+    {
+         <div class="alert alert-success" role="alert">
+           <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+           @TempData["MensagemErro"]
+        </div>   
+    }
+<br/>
+
 <table class="table table-dark" id="table-funcionarios">
   <thead>
     <tr>
@@ -33,7 +51,7 @@
                     <td>@funcionario.TempoExperiencia</td>
                     <td>@funcionario.Salario</td>
                   <td>
-                    <a role="button" asp-controller="Funcionario" asp-action="Editar" class="btn btn-primary">Editar</a>
+                    <a role="button" asp-controller="Funcionario" asp-action="Editar" asp-route-id="@funcionario.Id" class="btn btn-primary">Editar</a>
                      <a role="button" asp-controller="Funcionario" asp-action="ApagarConfirmacao" class="btn btn-danger">Apagar</a>
                   </td>
                  </tr>

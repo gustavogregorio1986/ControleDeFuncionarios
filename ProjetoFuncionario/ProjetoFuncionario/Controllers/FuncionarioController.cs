@@ -49,9 +49,29 @@ namespace ProjetoFuncionario.Controllers
         }
 
 
-        public IActionResult Editar()
+        public IActionResult Editar(int id)
         {
-            return View();
+            FuncionarioModel funcionario = _funcionarioRepositorio.ListarPorId(id);
+            return View(funcionario);
+        }
+
+        public IActionResult Alterar(FuncionarioModel funcionario)
+        {
+            try
+            {
+                if(ModelState.IsValid)
+                {
+                    _funcionarioRepositorio.Atualizar(funcionario);
+                    TempData["MesnagemSucesso"] = "Funcionário cadastrado com sucesso.";
+                    return RedirectToAction("Consultar");
+                }
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MesnagemSucesso"] = $"Ops, não conseguimos cadastra o funcionario, tente novamente, erro: " + erro;
+            }
+
+            return View("Editar", funcionario);
         }
 
         public IActionResult ApagarConfirmacao()

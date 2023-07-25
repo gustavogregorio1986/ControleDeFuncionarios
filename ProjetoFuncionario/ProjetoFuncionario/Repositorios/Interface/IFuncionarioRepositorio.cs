@@ -8,5 +8,9 @@ namespace ProjetoFuncionario.Repositorios.Interface
         List<FuncionarioModel> ListarTodos();
 
         FuncionarioModel Adicionar(FuncionarioModel funcionario);
+
+        FuncionarioModel ListarPorId(int id);
+
+        FuncionarioModel Atualizar(FuncionarioModel funcionario);
     }
 }

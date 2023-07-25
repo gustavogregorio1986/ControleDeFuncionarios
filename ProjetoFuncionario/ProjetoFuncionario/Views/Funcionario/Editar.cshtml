@@ -1,4 +1,5 @@
-﻿@{
+﻿@model FuncionarioModel
+@{
     ViewData["Title"] = "Editar Funcionario";
 }
 
@@ -6,27 +7,32 @@
     <h1 class="display-4">Editar Funcionario</h1>
 </div>
 
-<form>
+<form asp-controller="Funcionario" asp-action="Alterar" method="post">
+  <input type="hidden" asp-for="Id"/>
   <div class="form-group">
     <label for="Nome">Nome</label>
-    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Digite o Nome">
-    <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
+    <input type="text" asp-for="Nome" class="form-control" aria-describedby="emailHelp" placeholder="Digite o Nome">
+    @Html.ValidationMessageFor(x => x.Nome,null, new { @class = "field-validation" })
   </div>
   <div class="form-group">
     <label for="e-mail">Email</label>
-    <input type="text" class="form-control" placeholder="Digite o E-mail">
+    <input type="text" asp-for="Email" class="form-control" placeholder="Digite o E-mail">
+    @Html.ValidationMessageFor(x => x.Email,null, new { @class = "field-validation" })
   </div>
   <div class="form-group">
     <label for="Profissao">Profissão</label>
-    <input type="text" class="form-control" placeholder="Digite o E-mail">
+    <input type="text" asp-for="Profissao" class="form-control" placeholder="Digite a profissão">
+    @Html.ValidationMessageFor(x => x.Profissao,null, new { @class = "field-validation" })
   </div>
   <div class="form-group">
     <label for="tempoExperiencia">Tempo de Experiência</label>
-    <input type="number" class="form-control" placeholder="Digite o tempo de Experiencia">
+    <input type="number" asp-for="TempoExperiencia" class="form-control" placeholder="Digite o tempo de Experiencia">
+    @Html.ValidationMessageFor(x => x.TempoExperiencia,null, new { @class = "field-validation" })
   </div>
     <div class="form-group">
     <label for="salario">Salario</label>
-    <input type="text" class="form-control" placeholder="Digite o Salrio">
+    <input type="text" asp-for="Salario" class="form-control" placeholder="Digite o Salrio">
+    @Html.ValidationMessageFor(x => x.Salario,null, new { @class = "field-validation" })
   </div>
   <button type="submit" class="btn btn-primary btn-block">Editar Funcionario</button>
 </form>
